@@ -38,3 +38,12 @@ function cpuTurn() {
     else alert("Scissors");
     return choice;
 }
+
+function findWinner(uChoice, cChoice) {
+    let winner = "undefined";
+    if ( uChoice == "r" ) {
+        if ( cChoice == "s" ) winner = "player";
+        else winner = "cpu"; 
+    }
+    else if 
+}
