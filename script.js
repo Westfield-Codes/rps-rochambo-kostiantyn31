@@ -5,7 +5,7 @@ function main(){
     let cChoice = 0;
     while (uChoice == cChoice){
         uChoice = userTurn();
-        cChoice = CPUTurn();
+        cChoice = cpuTurn();
         if (uChoice == cChoice){
             alert("We've both chosen the same move! We must now DANCE.");
             alert("and by DANCE, I mean go again!");
