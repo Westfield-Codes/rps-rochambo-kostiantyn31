@@ -18,25 +18,34 @@ function userTurn(move){
     switch (move){
         case 1:
             alert("You've selected rock.");
-            return "rock";
+            return "r";
         case 2:
             alert("You've selected paper.");
-            return "paper";
+            return "p";
         case 3:
             alert("You've selected scissors.");
-            return "scissors";
+            return "s";
         default:
             alert("It's your turn. Please, select a move!");
             break;
     }
+    
 }
 
 function cpuTurn() {
     let choice = Math.floor(Math.random()*3);
-    if (choice == 0) alert("Rock");
-    else if (choice == 1) alert("Paper");
-    else alert("Scissors");
-    return choice;
+    if (choice == 0) {
+        alert("Rock");
+        return "r";
+    } 
+    else if (choice == 1) {
+        alert("Paper");
+        return "p";
+    } 
+    else {
+        alert("Scissors");
+        return "s";
+    } 
 }
 
 function findWinner(uChoice, cChoice) {
@@ -53,4 +62,5 @@ function findWinner(uChoice, cChoice) {
         if ( cChoice == "r" ) winner = "player";
         else winner = "cpu";
     }
+    alert("You pick " + uChoice + " CPU pick " + cChoice + ". " + winner + " win");
 }
