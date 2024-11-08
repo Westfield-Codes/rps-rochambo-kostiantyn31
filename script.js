@@ -45,5 +45,12 @@ function findWinner(uChoice, cChoice) {
         if ( cChoice == "s" ) winner = "player";
         else winner = "cpu"; 
     }
-    else if 
+    else if ( uChoice == "s" ) {
+        if ( cChoice == "p" ) winner = "player";
+        else winner = "cpu";
+    }
+    else {
+        if ( cChoice == "r" ) winner = "player";
+        else winner = "cpu";
+    }
 }
