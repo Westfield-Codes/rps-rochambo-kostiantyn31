@@ -1,4 +1,3 @@
-main();
 
 function main(){
     let uChoice = 0;
