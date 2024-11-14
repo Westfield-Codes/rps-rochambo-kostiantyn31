@@ -67,9 +67,9 @@ function cpuTurn() {
 
 function findwinner(u, c) {
     let winArray=[
-        ["r","p","I"],["r","s","you"],
-        ["p","s","I"],["p","r","you"],
-        ["s","r","I"],["s","p","you"]];
+        ["r","p","player"],["r","s","cpu"],
+        ["p","s","player"],["p","r","cpu"],
+        ["s","r","player"],["s","p","cpu"]];
     turns = u+c;
     for ( let i = 0; i < winArray.length; i++ ) {
         match = winArray[i][0] + winArray[i][1];
