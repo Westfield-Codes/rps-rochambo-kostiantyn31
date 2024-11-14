@@ -7,7 +7,8 @@ function main() {
         cChoice = cpuTurn();
         if ( uChoice == cChoice ) alert("We both picked " + cChoice);
     }
-    // findwinner(uChoice, cChoice);
+    findwinner(uChoice, cChoice);
+    alert("You pick " + uChoice + " cpu pick " + cChoice + ". " + winner + " win");
 }
 
 /* userTurn */ 
@@ -65,15 +66,16 @@ function cpuTurn() {
 } */
 
 function findwinner(u, c) {
-    turns = u+c;
-    let match = "";
     let winArray=[
         ["r","p","I"],["r","s","you"],
         ["p","s","I"],["p","r","you"],
         ["s","r","I"],["s","p","you"]];
-    for ( let = 0; i < winArray.length; i++ ) {
+    turns = u+c;
+    for ( let i = 0; i < winArray.length; i++ ) {
         match = winArray[i][0] + winArray[i][1];
-        if (match == turns) winner = winArray[i][2];
-    }    
-        
+        if (match == turns) {
+            winner = winArray[i][2];
+            return winner;
+        } 
+    }           
 }  
