@@ -1,3 +1,6 @@
+var score = [0,1]
+
+
 /* main */ 
 function main() {
     let uChoice = 0;
