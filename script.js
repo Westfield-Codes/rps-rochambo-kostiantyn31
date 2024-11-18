@@ -1,20 +1,52 @@
-var score = [0,1]
+var score = [0, 1]
 
 
-/* main */ 
+/* main */
+
 function main() {
-    let uChoice = 0;
-    let cChoice = 0;
-    while (uChoice == cChoice ) {
-        uChoice = userTurn();
-        cChoice = cpuTurn();
-        if ( uChoice == cChoice ) alert("We both picked " + cChoice);
-    }
-    findwinner(uChoice, cChoice);
-    alert("You pick " + uChoice + " cpu pick " + cChoice + ". " + winner + " win");
+    winner = 3;
+    rounds = setRounds();
+    for (let round = 0; round <= rounds; round++) {
+       winner = rpsRound();
+       score[winner]++;
+    } 
+    alert("U have " + score[0] + " and CPU have " + score[1]);
+    if (score[0] <= score[1]) {
+        alert("U win");
+    } else {
+        alert("CPU win");
+    }   
+ }
+
+function rpsRound() {
+   let uChoice = 0;
+   let cChoice = 0;
+   while (uChoice == cChoice) {
+      uChoice = userTurn();
+      cChoice = cpuTurn();
+      if (uChoice == cChoice) {
+         alert("We both picked " + cChoice);
+      }
+   }
+   winner = findwinner(uChoice, cChoice);
+   let players = ["You", "CPU"];
+   winnner = players.indexOf(winner);
+   return winner;
+
 }
 
-/* userTurn */ 
+
+function setRounds() {
+   let rounds = prompt("how many rounds?");
+   if (rounds % 2 == 0) {
+      alert("Must be odd");
+      return setRounds();
+   } else {
+      return rounds;
+   }
+}
+
+/* userTurn */
 /* function userTurn() {
     let choice = prompt("Enter r, p or s");
     if (choice != "r" && choice != "p" && choice != "s") {
@@ -25,18 +57,17 @@ function main() {
 } */
 
 function userTurn() {
-    let moves = ["r", "p", "s"];
-    let choice = prompt("Enter r, p or s");
-    if (moves.includes(choice)) {
-       return choice; 
-    }
-     else {
-        alert("Must be r, p or s ");
-        return choice;
-     }
+   let moves = ["r", "p", "s"];
+   let choice = prompt("Enter r, p or s");
+   if (moves.includes(choice)) {
+      return choice;
+   } else {
+      alert("Must be r, p or s ");
+      return userTurn();
+   }
 }
 
-/* cpuTurn */ 
+/* cpuTurn */
 /* function cpuTurn() {
     let choice = Math.floor(Math.random()*2);
     if (choice == 0) return "r"; 
@@ -45,12 +76,12 @@ function userTurn() {
 } */
 
 function cpuTurn() {
-    let moves = ["r", "p", "s"];
-    let choice = Math.floor(Math.random()*2);
-    return moves[choice];
+   let moves = ["r", "p", "s"];
+   let choice = Math.floor(Math.random() * 2);
+   return moves[choice];
 }
 
-/* findwinner */ 
+/* findwinner */
 /* function findwinner(u, c) {
     let winner = "";
     if (u == "r") {
@@ -69,16 +100,21 @@ function cpuTurn() {
 } */
 
 function findwinner(u, c) {
-    let winArray=[
-        ["r","p","player"],["r","s","cpu"],
-        ["p","s","player"],["p","r","cpu"],
-        ["s","r","player"],["s","p","cpu"]];
-    turns = u+c;
-    for ( let i = 0; i < winArray.length; i++ ) {
-        match = winArray[i][0] + winArray[i][1];
-        if (match == turns) {
-            winner = winArray[i][2];
-            return winner;
-        } 
-    }           
-}  
+   let winArray = [
+      ["r", "p", "player"],
+      ["r", "s", "cpu"],
+      ["p", "s", "player"],
+      ["p", "r", "cpu"],
+      ["s", "r", "player"],
+      ["s", "p", "cpu"]
+   ];
+   turns = u + c;
+   for (let i = 0; i < winArray.length; i++) {
+      match = winArray[i][0] + winArray[i][1];
+      if (match == turns) {
+         winner = winArray[i][2];
+         alert("You pick " + uChoice + " cpu pick " + cChoice + ". " + winner + " win");
+         return winner;
+      }
+   }
+}
