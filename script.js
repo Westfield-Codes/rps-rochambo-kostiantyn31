@@ -1,4 +1,4 @@
-var score = [0, 1]
+var score = [0, 0]
 
 
 /* main */
@@ -15,7 +15,8 @@ function main() {
         alert("U win");
     } else {
         alert("CPU win");
-    }   
+    }
+     
  }
 
 function rpsRound() {
@@ -28,9 +29,9 @@ function rpsRound() {
          alert("We both picked " + cChoice);
       }
    }
-   winner = findwinner(uChoice, cChoice);
-   let players = ["You", "CPU"];
-   winnner = players.indexOf(winner);
+   winner = findWinner(uChoice, cChoice);
+   let players = ["player", "cpu"];
+   winner = players.indexOf(winner);
    return winner;
 
 }
@@ -77,12 +78,12 @@ function userTurn() {
 
 function cpuTurn() {
    let moves = ["r", "p", "s"];
-   let choice = Math.floor(Math.random() * 2);
+   let choice = Math.floor(Math.random()*3);
    return moves[choice];
 }
 
-/* findwinner */
-/* function findwinner(u, c) {
+/* findWinner */
+/* function findWinner(u, c) {
     let winner = "";
     if (u == "r") {
         if ( c == "p") winner = "cpu";
@@ -99,21 +100,18 @@ function cpuTurn() {
     alert("You pick " + u + " cpu pick " + c + ". " + winner + " win");
 } */
 
-function findwinner(u, c) {
+function findWinner(u, c) {
    let winArray = [
-      ["r", "p", "player"],
-      ["r", "s", "cpu"],
-      ["p", "s", "player"],
-      ["p", "r", "cpu"],
-      ["s", "r", "player"],
-      ["s", "p", "cpu"]
+      ["r", "p", "player"],["r", "s", "cpu"],
+      ["p", "s", "player"],["p", "r", "cpu"],
+      ["s", "r", "player"],["s", "p", "cpu"]
    ];
    turns = u + c;
    for (let i = 0; i < winArray.length; i++) {
       match = winArray[i][0] + winArray[i][1];
       if (match == turns) {
          winner = winArray[i][2];
-         alert("You pick " + uChoice + " cpu pick " + cChoice + ". " + winner + " win");
+         alert("You pick " + u + " CPU pick " + c + ". " + winner + " win");
          return winner;
       }
    }
